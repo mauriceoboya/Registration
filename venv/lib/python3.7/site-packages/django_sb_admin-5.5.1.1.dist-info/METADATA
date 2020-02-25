@@ -1,0 +1,125 @@
+Metadata-Version: 2.1
+Name: django-sb-admin
+Version: 5.5.1.1
+Summary: SB Admin dashboard bootstrap 4 theme packaged as a reusable Django app.
+Home-page: https://github.com/bluszcz/django-sb-admin
+Author: Rafal Zawadzki
+Author-email: bluszcz@bluszcz.net
+License: Apache License version 2.0
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Description-Content-Type: text/x-rst
+
+===============
+django-sb-admin
+===============
+
+.. image:: https://devcarpet.net/images/django-sb-admin-2.png
+
+Introduction
+------------
+
+Django SB Admin is a resuable Django app which provides a Bootstrap 4 SB Admin dashboard theme:
+
+https://startbootstrap.com/templates/sb-admin/
+
+SB Admin is a free to download Bootstrap admin template. This template uses the
+default Bootstrap 3 styles along with a variety of powerful jQuery plugins to 
+create a powerful framework for creating admin panels, web apps, or back-end dashboards.
+
+Installation
+------------
+
+1. Install an app::
+
+    pip install django-sb-admin
+
+2. Add "django_sb_admin" to your INSTALLED_APPS setting like this::
+
+    INSTALLED_APPS = (
+        ...
+        'django_sb_admin',
+    )
+
+3. If you want to see an example app, add following to your urls file::
+
+    path('django-sb-admin/', include('django_sb_admin.urls')),
+
+Usage
+-----
+
+
+.. image:: https://devcarpet.net/images/django-sb-admin-2.01.png
+
+1. Copy following blank template::
+
+    django_sb_admin/sb_admin_blank.html
+
+or:
+
+2. Extend a base template::
+
+    {% extends "django_sb_admin/base.html" %}
+
+and then:
+
+3. Override following blocks::
+
+    {% block sb_admin_header %}<!-- Header of the page -->{% endblock sb_admin_header %}
+    {% block sb_admin_title %}<!-- Title of the content the page -->{% endblock sb_admin_title %}
+    {% block sb_admin_sidebar %}<!-- left sidebar -->{% endblock sb_admin_sidebar %}
+    {% block sb_admin_navbar_right %}<!-- right top navbar -->{% endblock sb_admin_navbar_right %}
+    {% block sb_admin_content %}<!-- content -->{% endblock sb_admin_content %}
+    {% block sb_admin_copyright %}<!-- copyright -->{% endblock sb_admin_copyright %}
+
+To use included login page put following in your **urls.py**::
+
+    url(r'^accounts/login/$', auth_views.login, 
+        {'template_name': 'django_sb_admin/examples/login.html'}),
+
+
+Conventions
+-----------
+
+Template blocks
+===============
+
+* Names  of blocks start with *sb_admin* 
+
+Extras
+------
+
+* login template
+* messages support in a base template
+
+License
+-------
+
+Copyright 2015-2019 Rafal Zawadzki
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+SB Admin itself is licensed under the MIT License 
+https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE
+
+
